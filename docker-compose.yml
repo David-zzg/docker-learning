@@ -1,0 +1,41 @@
+version: "3"
+services:
+  nginx:
+    #container_name: nginx
+    image: nginx
+#    image: nginx
+#    network_mode: "host"
+#    deploy:
+#      replicas: 2
+#      restart_policy:
+#        condition: on-failure
+    networks:
+      - ddd-network
+    ports:
+      - "80:80"
+    volumes:
+      - "./nginx/conf.d:/etc/nginx/conf.d"
+  node:
+#    #container_name: ddd-node-instance
+   build: './node/'
+#    deploy:
+#      replicas: 2
+#      resources:
+#        limits:
+#          cpus: "0.1"
+#          memory: 50M
+#      restart_policy:
+#        condition: on-failure
+##    network_mode: "host"
+   networks:
+         - ddd-network
+##          - ddd-host
+   ports:
+     - "3000:3000"
+   volumes:
+     - "./node:/data/www/node"
+networks:
+  ddd-network:
+#  ddd-host:
+#    external:
+#      name: host
