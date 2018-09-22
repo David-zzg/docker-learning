@@ -1,0 +1,14 @@
+version: "3"
+services: 
+  jekins:
+    image: jenkins/jenkins
+    networks: 
+      - ddd-jenkins
+    ports: 
+      - "8080:8080"
+      - "50000:50000"
+    volumes: 
+      - "/var/jenkins_home:/var/jenkins_home"
+      - "/root/jekins:/var/jenkins_config"
+networks: 
+  ddd-jenkins:
