@@ -1,5 +1,4 @@
 FROM node
-COPY . /data/www
 EXPOSE 3000
-RUN cd /data/www && npm i
-CMD node -v && node /data/www/index.js
+RUN cd /data/www/node && npm i
+CMD node -v && node /data/www/node/index.js
