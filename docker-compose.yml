@@ -16,7 +16,8 @@ services:
     volumes:
       - "./nginx/conf.d:/etc/nginx/conf.d"
   node:
-    build: './node'
+    build: 
+      context: './node'
     # image: node
 #    deploy:
 #      replicas: 2
@@ -34,7 +35,6 @@ services:
       - "3000:3000"
     volumes:
       - "./node:/data/www/node"
-    # command: node -v && echo 'node start' && cd /data/www/node && npm i && node index.js
 networks:
   ddd-network:
 #  ddd-host:
