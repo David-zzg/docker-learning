@@ -35,7 +35,11 @@ services:
    volumes:
      - "./node:/data/www/node"
   command: 
-    ["node","-v",'echo','node start','cd','/data/www/node','npm','i','node','index.js']
+    - "node -v"
+    - "echo 'node start'"
+    - "cd /data/www/node"
+    - "npm i"
+    - "node index.js"
 networks:
   ddd-network:
 #  ddd-host:
