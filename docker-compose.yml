@@ -17,7 +17,7 @@ services:
       - "./nginx/conf.d:/etc/nginx/conf.d"
   node:
 #    #container_name: ddd-node-instance
-   build: './node/'
+   image: node
 #    deploy:
 #      replicas: 2
 #      resources:
@@ -34,6 +34,8 @@ services:
      - "3000:3000"
    volumes:
      - "./node:/data/www/node"
+  command: 
+    node -v && echo 'node start' && cd /data/www/node && npm i && index.js
 networks:
   ddd-network:
 #  ddd-host:
