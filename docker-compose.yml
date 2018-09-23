@@ -16,8 +16,7 @@ services:
     volumes:
       - "./nginx/conf.d:/etc/nginx/conf.d"
   node:
-#    #container_name: ddd-node-instance
-   image: node
+    image: node
 #    deploy:
 #      replicas: 2
 #      resources:
@@ -27,14 +26,14 @@ services:
 #      restart_policy:
 #        condition: on-failure
 ##    network_mode: "host"
-   networks:
-         - ddd-network
+    networks:
+      - ddd-network
 ##          - ddd-host
-   ports:
-     - "3000:3000"
-   volumes:
-     - "./node:/data/www/node"
-  command: node -v && echo 'node start' && cd /data/www/node && npm i && node index.js
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./node:/data/www/node"
+    command: node -v && echo 'node start' && cd /data/www/node && npm i && node index.js
 networks:
   ddd-network:
 #  ddd-host:
